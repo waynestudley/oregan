@@ -9,25 +9,55 @@
     <script nomodule src="/build/oregan.js"></script>
   </head>
   <body>
-    <custom-input id="customInput" customstyle="
-      background-color: grey;
+
+    <custom-input id="customInput" showpassword="false" placeholder="Please enter your username" customstyle="
+      font-family: sans-serif;
+      background-color: #666;
       color: white;
       width:50vw;
       height: 30px;
-      border-radius:
-      20px;border:
-      solid 1px black;"
-    >
+      border-radius: 20px;
+      border: none;
+      text-align: center;
+      line-height: inherit; 
+      whiteSpace: nowrap,
+      overflow: hidden,
+      maxHeight: 1em,
+    ">
+    <slot></slot>
+ </custom-input>
+ <style>
+      blink {
+        color: #1c87c9;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
+    </style>
+ </br>
+    <custom-input id="customPasswordInput" showpassword="truw" placeholder="Please enter your password" customstyle="
+      font-family: sans-serif;
+      background-color: #444;
+      color: white;
+      animation: blink-empty 0.2s infinite;
+      width:50vw;
+      height: 30px;
+      border-radius: 20px;
+      border: none;
+      text-align: center;
+      line-height: inherit; 
+    ">
     <slot></slot>
   </custom-input>
   </br>
-    <button id="toggleButton" style="width: 50vw; background-color: darkgray; border-radius: 50px">Toggle Password</button>
+    <button id="toggleButton" style="width: 50vw; color: white; background-color: #222; border-radius: 50px">Toggle Password</button>
 
     <script>
-      const customInput = document.getElementById('customInput');
+      const customInput = document.getElementById('customPasswordInput');
       const toggleButton = document.getElementById('toggleButton');
       toggleButton.addEventListener('click', () => {
-        customInput.showPassword = !customInput.showPassword;
+        console.log('TOGGLE')
+        customInput.showpassword = !customInput.showpassword;
       });
     </script>
   </body>
