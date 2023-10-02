@@ -7,9 +7,9 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CustomInput {
-        "customLabel": string;
         "customstyle": string;
-        "showPassword": boolean;
+        "placeholder": string;
+        "showpassword": boolean;
     }
 }
 declare global {
@@ -25,9 +25,9 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CustomInput {
-        "customLabel"?: string;
         "customstyle"?: string;
-        "showPassword"?: boolean;
+        "placeholder"?: string;
+        "showpassword"?: boolean;
     }
     interface IntrinsicElements {
         "custom-input": CustomInput;

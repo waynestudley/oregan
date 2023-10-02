@@ -1,0 +1,14 @@
+.place-holder {
+  pointer-events: none;
+  position: relative;
+  top: -26px;
+  opacity: 60%;
+}
+
+.custom-password-input {
+  line-height:134vh; /* Adjust the line-height as needed */
+  vertical-align:inherit; /* Adjust the vertical alignment as needed */
+  white-space: nowrap; /* Prevent text from wrapping to a new line */
+  overflow: hidden;   /* Hide overflow content */
+  
+}
