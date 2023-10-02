@@ -7,8 +7,6 @@ import { Component, h, State, Prop, Element, Watch } from "@stencil/core";
 })
 export class CustomInput {
   @State() inputValue: string = "";
-  // @State() passwordString: string = "";
-  // @Prop() customlabel: string = "" as string;
   @Prop() showpassword: boolean = true;
   @Prop() customstyle: string = "";
   @Prop() placeholder: string = "";
@@ -23,21 +21,13 @@ export class CustomInput {
 
   @Watch("showpassword")
   showPasswordChanged(newValue: boolean, oldValue: boolean) {
-    // This function will be called when 'showpassword' changes
-    console.log(
-      `'showpassword' changed from ${oldValue} to ${newValue} - ${this.passwordString}`
-    );
-
-    // You can perform any additional actions here
-    // For example, you might want to update the input display based on the new value
+    // Handle changes in showpassword - emitted from the HTML page
     if (newValue) {
-      console.log("NEW");
       const inputField = this.element.shadowRoot.querySelector(
         ".custom-password-input"
       );
-      inputField.innerHTML = this.passwordString;
-    } else {
-      console.log("OLD");
+      inputField.innerHTML = "•".repeat(this.passwordString.length);
+    } else if (oldValue) {
       const inputField = this.element.shadowRoot.querySelector(
         ".custom-password-input"
       );
@@ -46,10 +36,8 @@ export class CustomInput {
   }
 
   private handleInputChange(event: Event | KeyboardEvent) {
-    // const inputElement = event.target as HTMLElement;
     const disallowedKeys = ["Enter"];
     const keyboardEvent = event as KeyboardEvent;
-    console.log(keyboardEvent.key);
     if (event instanceof KeyboardEvent) {
       if (disallowedKeys.includes(keyboardEvent.key)) {
         event.preventDefault();
@@ -60,10 +48,22 @@ export class CustomInput {
         }
       }
     }
-    console.log("Stored password: ", this.passwordString);
   }
 
   private handleClick() {
+    this.isActive = false;
+    const inputField = this.element.shadowRoot.querySelector(
+      ".custom-password-input"
+    );
+
+    const currentValue = inputField.innerHTML;
+
+    if (currentValue.trim().toLowerCase() === this.placeholder.toLowerCase()) {
+      inputField.innerHTML = "";
+    }
+  }
+
+  private handleFocus() {
     this.isActive = false;
     const inputField = this.element.shadowRoot.querySelector(
       ".custom-password-input"
@@ -102,7 +102,12 @@ export class CustomInput {
     if (disallowedKeys.includes(event.key)) {
       event.preventDefault();
     }
-    if (this.showpassword && event.key !== "Shift") {
+    if (
+      this.showpassword &&
+      event.key !== "Shift" &&
+      event.key !== "Tab" &&
+      event.key !== "CapsLock"
+    ) {
       event.key === "Backspace"
         ? (this.passwordString = this.passwordString.substring(
             0,
@@ -131,7 +136,7 @@ export class CustomInput {
       const range = document.createRange();
       const sel = window.getSelection();
       range.selectNodeContents(inputField);
-      range.collapse(false); // Move caret to the end
+      range.collapse(false);
       sel.removeAllRanges();
       sel.addRange(range);
     }
@@ -157,21 +162,14 @@ export class CustomInput {
               }
               onInput={(event) => this.handleInputChange(event)}
               onClick={() => this.handleClick()}
+              onFocus={this.handleFocus.bind(this)}
               onBlur={() => this.handleBlur()}
               onKeyDown={(event) => this.handleKeyPress(event)}
               innerHTML={
                 !this.passwordString && this.inputValue === this.placeholder
                   ? this.placeholder
-                  : "" //"•".repeat(this.passwordString.length)
+                  : ""
               }
-              // innerHTML={
-              //   this.passwordString === this.placeholder
-              //     ? ""
-              //     : this.placeholder.toLowerCase().includes("password")
-              //     ? "Some other content"
-              //     : "•".repeat(this.passwordString.length)
-              // }
-
               id="custom-input-field"
             ></div>
             <div class="place-holder">

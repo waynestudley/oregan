@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default            |
-| -------------- | --------------- | ----------- | --------- | ------------------ |
-| `customLabel`  | `custom-label`  |             | `string`  | `'' as string`     |
-| `customStyle`  | `custom-style`  |             | `string`  | `'color: orange;'` |
-| `showPassword` | `show-password` |             | `boolean` | `false`            |
+| Property       | Attribute      | Description | Type      | Default |
+| -------------- | -------------- | ----------- | --------- | ------- |
+| `customstyle`  | `customstyle`  |             | `string`  | `""`    |
+| `placeholder`  | `placeholder`  |             | `string`  | `""`    |
+| `showpassword` | `showpassword` |             | `boolean` | `true`  |
 
 
 ----------------------------------------------

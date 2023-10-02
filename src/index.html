@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Oregan - custom input elements</title>
 
     <script type="module" src="/build/oregan.esm.js"></script>
     <script nomodule src="/build/oregan.js"></script>
@@ -24,7 +24,7 @@
       overflow: hidden,
       maxHeight: 1em,
     ">
-    <slot></slot>
+    <slot tabIndex="1"></slot>
  </custom-input>
  <style>
       blink {
@@ -47,16 +47,21 @@
       text-align: center;
       line-height: inherit; 
     ">
-    <slot></slot>
+    <slot tabIndex="2"></slot>
   </custom-input>
   </br>
-    <button id="toggleButton" style="width: 50vw; color: white; background-color: #222; border-radius: 50px">Toggle Password</button>
+    <button tabIndex="3" id="toggleButton" style="width: 50vw; color: white; background-color: #222; border-radius: 50px">Toggle Password</button>
 
     <script>
+      // for prettiness sake:
+      const button = document.getElementById('toggleButton');
+      button.addEventListener('mouseover', () => {
+        button.style.cursor = 'pointer';
+      });
+
       const customInput = document.getElementById('customPasswordInput');
       const toggleButton = document.getElementById('toggleButton');
       toggleButton.addEventListener('click', () => {
-        console.log('TOGGLE')
         customInput.showpassword = !customInput.showpassword;
       });
     </script>
