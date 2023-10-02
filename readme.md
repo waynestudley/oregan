@@ -26,7 +26,7 @@ To run the unit tests for the components, run:
 npm test
 ```
 
-(I haven't built the tests yet - these are still as per default creating the barebones project so ignore for now)
+I haven't built the tests yet - these are still as per default creating the barebones project so ignore for now
 
 I've kept this as simple as possible using just an HTMLDivElement to handle the inputs but that way they are fully customisable with inline styling (I prefer this method rather than constraining the actual component - looks longer/messier in the HTML/React but more flexible).
 
