@@ -1,18 +1,38 @@
 .place-holder {
   pointer-events: none;
+  font-style: italic;
+  text-align: center;
   position: relative;
-  top: -26px;
-  opacity: 60%;
+  top: -3.5vh;
+  opacity: 50%;
 }
 
-.custom-password-input {
-  line-height:134vh; /* Adjust the line-height as needed */
-  vertical-align:inherit; /* Adjust the vertical alignment as needed */
-  white-space: nowrap; /* Prevent text from wrapping to a new line */
-  overflow: hidden;   /* Hide overflow content */
-  
+.input-container {
+  text-indent: 1vw;
+  line-height:3.4vh;
+  vertical-align:inherit;
+  white-space: nowrap; 
+  overflow: hidden;  
 }
 
-.blue {
-  background-color: grey;
+div[contenteditable] {
+  outline: 0 solid transparent;
+}
+
+.custom-input {
+  line-height: 200px;
+	cursor: text;
+	margin-top:12px;
+  font-weight:700;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.7);
+}
+
+#customPasswordInput {
+  float: left;
+  display: flex;
+}
+
+.sbs {
+  display: flex;
+  justify-content: space-between;
 }

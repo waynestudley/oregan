@@ -9,8 +9,13 @@ export namespace Components {
     interface CustomInput {
         "customstyle": string;
         "placeholder": string;
-        "showpassword": boolean;
     }
+    interface ToggleVisibility {
+    }
+}
+export interface ToggleVisibilityCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLToggleVisibilityElement;
 }
 declare global {
     interface HTMLCustomInputElement extends Components.CustomInput, HTMLStencilElement {
@@ -19,18 +24,28 @@ declare global {
         prototype: HTMLCustomInputElement;
         new (): HTMLCustomInputElement;
     };
+    interface HTMLToggleVisibilityElement extends Components.ToggleVisibility, HTMLStencilElement {
+    }
+    var HTMLToggleVisibilityElement: {
+        prototype: HTMLToggleVisibilityElement;
+        new (): HTMLToggleVisibilityElement;
+    };
     interface HTMLElementTagNameMap {
         "custom-input": HTMLCustomInputElement;
+        "toggle-visibility": HTMLToggleVisibilityElement;
     }
 }
 declare namespace LocalJSX {
     interface CustomInput {
         "customstyle"?: string;
         "placeholder"?: string;
-        "showpassword"?: boolean;
+    }
+    interface ToggleVisibility {
+        "onToggleChange"?: (event: ToggleVisibilityCustomEvent<boolean>) => void;
     }
     interface IntrinsicElements {
         "custom-input": CustomInput;
+        "toggle-visibility": ToggleVisibility;
     }
 }
 export { LocalJSX as JSX };
@@ -38,6 +53,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "custom-input": LocalJSX.CustomInput & JSXBase.HTMLAttributes<HTMLCustomInputElement>;
+            "toggle-visibility": LocalJSX.ToggleVisibility & JSXBase.HTMLAttributes<HTMLToggleVisibilityElement>;
         }
     }
 }

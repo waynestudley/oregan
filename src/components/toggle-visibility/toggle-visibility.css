@@ -1,0 +1,11 @@
+.toggle-visibility {
+  float: right;
+  width: 100%;
+  color: blue;
+  left: 45px;
+  position: absolute;
+}
+
+#toggle-visible {
+  cursor:alias !important;
+}
