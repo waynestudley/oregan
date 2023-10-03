@@ -12,3 +12,7 @@
   overflow: hidden;   /* Hide overflow content */
   
 }
+
+.blue {
+  background-color: grey;
+}

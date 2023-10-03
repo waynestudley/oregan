@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  background-color: blueviolet;
+}
+
+.blue {
+  background-color: yellow;
+  background-image: 'assets/og_bg.png';
+}
