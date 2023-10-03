@@ -1,4 +1,12 @@
-import { Component, h, State, Prop, Element, Watch } from "@stencil/core";
+import {
+  Component,
+  h,
+  State,
+  Prop,
+  Element,
+  Watch,
+  Listen,
+} from "@stencil/core";
 
 @Component({
   tag: "custom-input",
@@ -7,7 +15,7 @@ import { Component, h, State, Prop, Element, Watch } from "@stencil/core";
 })
 export class CustomInput {
   @State() inputValue: string = "";
-  @Prop() showpassword: boolean = true;
+  @State() showpassword: boolean = true;
   @Prop() customstyle: string = "";
   @Prop() placeholder: string = "";
   @State() passwordString: string = "";
@@ -17,6 +25,11 @@ export class CustomInput {
 
   componentWillLoad() {
     this.isActive = true;
+  }
+
+  @Listen("toggleChange", { target: "window" })
+  handleToggleChange(event: CustomEvent<boolean>) {
+    this.showpassword = event.detail;
   }
 
   @Watch("showpassword")
