@@ -7,11 +7,10 @@
 
 ## Properties
 
-| Property       | Attribute      | Description | Type      | Default |
-| -------------- | -------------- | ----------- | --------- | ------- |
-| `customstyle`  | `customstyle`  |             | `string`  | `""`    |
-| `placeholder`  | `placeholder`  |             | `string`  | `""`    |
-| `showpassword` | `showpassword` |             | `boolean` | `true`  |
+| Property      | Attribute     | Description | Type     | Default |
+| ------------- | ------------- | ----------- | -------- | ------- |
+| `customstyle` | `customstyle` |             | `string` | `""`    |
+| `placeholder` | `placeholder` |             | `string` | `""`    |
 
 
 ----------------------------------------------
