@@ -10,9 +10,9 @@ export class ToggleVisibility {
   @Event() toggleChange: EventEmitter<boolean>;
 
   private handleClick() {
-    console.log("asdasd");
+
     this.imageToggle = !this.imageToggle;
-    this.toggleChange.emit(this.imageToggle);
+    this.toggleChange.emit(!this.imageToggle);
   }
 
   render() {

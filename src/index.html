@@ -12,7 +12,7 @@
   <body>
     
     <div class="container">   
-      <custom-input tabiindex="1" id="customInput" showpassword="false" contenteditable="true" placeholder="Type Username Here" customstyle="
+      <custom-input tabiindex="1" id="customInput"  placeholder="Type Username Here" customstyle="
           font-family: 
           sans-serif;
           background-color: #6D9DEB;
@@ -25,13 +25,12 @@
           whiteSpace: nowrap,
           overflow: hidden,
       ">
-      
-    </span>
-  </custom-input>
+      <slot tabIndex="1"></slot>
+    </custom-input>
 
       <div class="sbs">
           <div class="sbsl">
-            <custom-input id="customPasswordInput" showpassword="true" placeholder="Type Password Here" customstyle="
+            <custom-input id="customPasswordInput" placeholder="Type Password Here" customstyle="
               font-family: sans-serif;
               background-color: #6D9DEB;
               color: #000;

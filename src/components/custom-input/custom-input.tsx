@@ -29,12 +29,13 @@ export class CustomInput {
 
   @Listen("toggleChange", { target: "window" })
   handleToggleChange(event: CustomEvent<boolean>) {
-    this.showpassword = event.detail;
+    if (this.placeholder.toLowerCase().includes("password")) {
+      this.showpassword = event.detail;
+    }
   }
 
   @Watch("showpassword")
   showPasswordChanged(newValue: boolean, oldValue: boolean) {
-    // Handle changes in showpassword - emitted from the HTML page
     if (newValue) {
       const inputField = this.element.shadowRoot.querySelector(
         ".custom-password-input"
@@ -54,7 +55,10 @@ export class CustomInput {
     if (event instanceof KeyboardEvent) {
       if (disallowedKeys.includes(keyboardEvent.key)) {
         event.preventDefault();
-      } else if (this.showpassword) {
+      } else if (
+        this.showpassword &&
+        this.placeholder.toLowerCase().includes("password")
+      ) {
         this.moveCaretToEnd();
         if (this.inputValue === this.placeholder) {
           this.inputValue = "";
@@ -77,6 +81,7 @@ export class CustomInput {
   }
 
   private handleFocus() {
+    console.log(this.placeholder, " <<<");
     this.isActive = false;
     const inputField = this.element.shadowRoot.querySelector(
       ".custom-password-input"
@@ -90,6 +95,7 @@ export class CustomInput {
   }
 
   private handleBlur() {
+    console.log(this.placeholder, " <<<");
     this.isActive = true;
     const inputField = this.element.shadowRoot.querySelector(
       ".custom-password-input"
@@ -115,6 +121,7 @@ export class CustomInput {
     if (disallowedKeys.includes(event.key)) {
       event.preventDefault();
     }
+
     if (
       this.showpassword &&
       event.key !== "Shift" &&
@@ -128,16 +135,22 @@ export class CustomInput {
           ))
         : (this.passwordString += event.key);
 
-      if (this.showpassword) {
+      if (
+        this.showpassword &&
+        this.placeholder.toLowerCase().includes("password")
+      ) {
         inputElement.innerHTML = "•".repeat(inputElement.innerHTML.length);
       }
       this.moveCaretToEnd();
 
       const replacePassword = () => {
-        inputElement.innerHTML = "•".repeat(inputElement.innerHTML.length);
-        this.moveCaretToEnd();
+        if (this.placeholder.toLowerCase().includes("password")) {
+          inputElement.innerHTML = "•".repeat(inputElement.innerHTML.length);
+          this.moveCaretToEnd();
+        }
       };
-      setTimeout(replacePassword, 500);
+
+      setTimeout(replacePassword, 300);
     }
   }
 
