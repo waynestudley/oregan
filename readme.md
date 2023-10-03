@@ -1,4 +1,3 @@
-
 ### So, custom input fields without using the < input > element.
 
 I've used StencilJS (as mentioned last Thursday) for these small components (**https://stenciljs.com**). A handy tool thats easy to use/develop/test/compile & automatic polyfills. 
