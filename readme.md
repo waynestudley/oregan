@@ -39,7 +39,7 @@ I've tested this on multiple browsers but only on a mac - I don't have a PC nor 
 
 There's a simple zip file that contains and html and a css file (it'll need a quick npm install from the root directory) - this was built using the component (npm installing the oregan component) - ~~there's some work to do on text alignment/leading and the un/visible toggle image should really be a seperate component (as there's far too much css/scripting going on in the html itself - the separate components should emit events to avoid this).~~
 
-**The visibility toggle now a separate component emitting/talking to the custom-input component and the spacing/alignment is now fixed - looking and working much better.
+T**he visibility toggle now a separate component emitting/talking to the custom-input component and the spacing/alignment is now fixed - looking and working much better.
 
 I've also updated the html_.zip file**
 
