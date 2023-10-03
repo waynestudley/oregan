@@ -41,6 +41,6 @@ There's a simple zip file that contains and html and a css file (it'll need a qu
 
 _**The visibility toggle now a separate component emitting/talking to the custom-input component and the spacing/alignment is now fixed - looking and working much better.**_
 
-_**I've also updated the html_ zip file**_
+_**I've also updated the html zip file**_
 
 ~~I'll spend some time getting this sorted and update the repo later but I thought I'd better get something up and live.~~
