@@ -31,7 +31,7 @@ I haven't built the tests yet - these are still as per default creating the bare
 
 I've kept this as simple as possible using just an HTMLDivElement to handle the inputs but that way they are fully customisable with inline styling (I prefer this method rather than constraining the actual component - looks longer/messier in the HTML/React/etc but more flexible).
 
-I've added a mobile phone style method so that the last character is displayed for 500ms before turning back to a hidden character - mostly for the fun of it but I guess it has some practicality.
+I've added the mobile style method so that the last character is displayed for 3500ms before turning back to a hidden character - this ideally could (perhaps should) easily be passed as a prop from the faux password input element?
 
 Placeholers were a challenge - but I found a work-around.
 
